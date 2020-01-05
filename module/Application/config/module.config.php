@@ -20,7 +20,7 @@ return [
                 'options' => [
                     'route'    => '/',
                     'defaults' => [
-                        'controller' => CashRegisterController::class,
+                        'controller' => Controller\IndexController::class,
                         'action'     => 'index',
                     ],
                 ],
