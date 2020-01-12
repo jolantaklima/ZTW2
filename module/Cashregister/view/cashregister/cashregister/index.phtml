@@ -1,0 +1,35 @@
+<?php
+$brand = 'List of cashregisters';
+$this->headTitle($brand);
+?>
+<h1><?= $this->escapeHtml($brand); ?></h1>
+<p>
+    <a href="<?= $this->url('cashregister', ['action' => 'add']) ?>">Add new cashregister</a>
+</p>
+
+<table class="table">
+    <tr>
+        <th>Place</th>
+        <th>Brand</th>
+        <th>Model</th>
+        <th>&nbsp;</th>
+    </tr>
+    <?php foreach ($this->paginator as $cashregister) : // <-- change here! ?>
+        <tr>
+            <td><?= $this->escapeHtml($cashregister->place) ?></td>
+            <td><?= $this->escapeHtml($cashregister->brand) ?></td>
+            <td><?= $this->escapeHtml($cashregister->model) ?></td>
+            <td>
+                <a href="<?= $this->url('cashregister', ['action' => 'edit', 'id' => $cashregister->id]) ?>">Edit</a>
+                <a href="<?= $this->url('cashregister', ['action' => 'delete', 'id' => $cashregister->id]) ?>">Delete</a>
+            </td>
+        </tr>
+    <?php endforeach; ?>
+</table>
+
+<?= $this->paginationControl(
+    $this->paginator,
+    'sliding',
+    'partial/paginator',
+    ['route' => 'cashregister']
+); ?>
