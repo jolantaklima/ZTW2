@@ -1,36 +1,32 @@
 <?php
 
-namespace CashRegister;
+namespace Cashregister;
 
-use Zend\ServiceManager\Factory\InvokableFactory;
+use Zend\Router\Http\Segment;
 
 return [
-    'controllers' => [
-        'factories' => [
-            Controller\CashRegisterController::class => InvokableFactory::class,
-        ],
-    ],
     'router' => [
         'routes' => [
-            'album' => [
+            'cashregister' => [
                 'type'    => Segment::class,
                 'options' => [
-                    'route' => '/album[/:action[/:id]]',
+                    'route'       => '/cashregister[/:action[/:id]]',
                     'constraints' => [
                         'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
                         'id'     => '[0-9]+',
                     ],
-                    'defaults' => [
-                        'controller' => Controller\CashRegisterController::class,
+                    'defaults'    => [
+                        'controller' => Controller\CashregisterController::class,
                         'action'     => 'index',
                     ],
                 ],
             ],
         ],
     ],
+
     'view_manager' => [
         'template_path_stack' => [
-            'album' => __DIR__ . '/../view',
+            'cashregister' => __DIR__ . '/../view',
         ],
     ],
 ];
